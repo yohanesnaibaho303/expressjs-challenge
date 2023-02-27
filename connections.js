@@ -22,6 +22,6 @@ const makeNewConnection = (uri) => {
    return db;
   };
 
-const dbConnection = makeNewConnection("mongodb+srv://yohanesnaibaho:pratama128c@cluster0.f4hyj98.mongodb.net/?retryWrites=true&w=majority");
+const dbConnection = makeNewConnection("mongodb+srv://yohanespratama303:pratama128c@cluster0.5we9zgr.mongodb.net/?retryWrites=true&w=majority");
 
 module.exports = dbConnection;
