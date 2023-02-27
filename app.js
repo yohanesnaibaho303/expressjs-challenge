@@ -10,15 +10,16 @@ app.get("/", (req, res) => res.type('html').send(html));
 app.get("/location", (req, res) => res.json({ location: "cikarang" }));
 
 app.get("/visitor", async (req, res) => {
+  const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   let ipData = new ipModel({
-   ip_addr: req.ip,
+   ip_addr: ipAddress,
    date_added: new Date(),
   });
   await ipData.save();
 
   let numVisits = await ipModel.count()
 
-  return res.json({ your_ip: req.ip, visitor_number: numVisits });
+  return res.json({ your_ip: ipAddress, visitor_number: numVisits });
  });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
